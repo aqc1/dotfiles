@@ -1,5 +1,19 @@
+" Not compatible with old vi
+set nocompatible
+filetype off
+
 " Vim history
 set history=500
+
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+" Vundle plugins here
+Plugin 'scrooloose/nerdtree'
+
+call vundle#end()
 
 " Enable filetype plugins
 filetype plugin on
@@ -16,7 +30,13 @@ set ruler
 set cmdheight=1
 
 " Buffer is hidden when abandoned
-set hid
+set hidden
+
+" Rendering go brrrrrr
+set ttyfast
+
+" Enable WiLd menu
+set wildmenu
 
 " Configure backspace
 set backspace=eol,start,indent
