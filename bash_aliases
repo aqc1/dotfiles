@@ -4,6 +4,7 @@
 alias cls="/usr/bin/clear"
 alias ls="/usr/bin/ls --color=auto --group-directories-first -lF"
 alias cat="/usr/bin/batcat"
+alias xclip="/usr/bin/xclip -selection clipboard"
 
 # Package manager aliases
 alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt update"
