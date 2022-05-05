@@ -3,6 +3,7 @@
 # Quality of life/generic
 alias cls="/usr/bin/clear"
 alias ls="/usr/bin/ls --color=auto --group-directories-first -lF"
+alias cat="/usr/bin/batcat"
 
 # Package manager aliases
 alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt update"
