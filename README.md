@@ -1,6 +1,6 @@
 # Dotfiles
 
-> Anthony Cleary | 4 May 2022
+> Anthony Cleary | 5 May 2022
 
 Just my dotfiles, feel free to use and/or modify as you wish.
 
