@@ -7,5 +7,7 @@ alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt up
 alias upgrade="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt upgrade"
 
 # Git-specific
+alias grab="/usr/bin/git add"
+alias commit="/usr/bin/git commit -m"
 alias yeet="/usr/bin/git push"
 alias yoink="/usr/bin/git pull"
