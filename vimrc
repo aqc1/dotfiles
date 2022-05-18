@@ -1,84 +1,107 @@
-" Not compatible with old vi
-set nocompatible
-filetype off
-
-" Vim history
-set history=500
-
 " Vundle
+filetype off
+set nocompatible
+
+let g:vundle_default_git_proto = 'git'
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
 
-" Vundle plugins here
+" Bundles
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'sjl/gundo.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
+Plugin 'TomNomNom/xoria256.vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
-" Enable filetype plugins
-filetype plugin on
+
+" Required for vundle
+"filetype plugin indent on 
+filetype plugin on 
 filetype indent on
+ 
+ 
+" Highlighting
+syntax on
 
-" Line numbers
-set number
-set relativenumber
+set encoding=utf-8
 
-" Show current position
+" Airline config
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='powerlineish'
+
+" History
+set history=50
+
+" Display
+set ls=2
+set showmode
+set showcmd
+set modeline
 set ruler
+set title
+set nu
 
-" Height of command bar
-set cmdheight=1
+" Line wrapping
+set nowrap
+set linebreak
+set showbreak=▹
 
-" Buffer is hidden when abandoned
-set hidden
-
-" Rendering go brrrrrr
-set ttyfast
-
-" Enable WiLd menu
-set wildmenu
-
-" Configure backspace
-set backspace=eol,start,indent
+" Auto indent what you can
+set autoindent
 
 " Searching
 set ignorecase
 set smartcase
+set gdefault
 set hlsearch
-set incsearch
-set magic
 set showmatch
 
-" Sounds are annoying...
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
+" Enable jumping into files in a search buffer
+set hidden 
 
-" Add extra margin to the left
-set foldcolumn=1
+" Make backspace a bit nicer
+set backspace=eol,start,indent
 
-" Syntax Highlighting
-syntax enable
-
-" Pretty colors
-set background=dark
-
-" Set standard encoding
-set encoding=utf8
-
-" Files and backups
-set nobackup
-set nowb
-set noswapfile
-
-" Text, tabs, and spaces
-set expandtab
-set smarttab
+" Indentation
 set shiftwidth=4
 set tabstop=4
-set lbr
-set tw=500
-set ai
-set si
-set wrap
+set softtabstop=4
+set shiftround
+set expandtab
+
+" Disable mouse
+set mouse=
+
+" Colorscheme
+if &t_Co == 256
+    try
+        color xoria256
+    catch /^Vim\%((\a\+)\)\=:E185/
+        " Oh well
+    endtry
+endif
+
+" Bash command for Home/End
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+" Visual prompt for command completion
+set wildmenu
+
+" Folding
+set nofoldenable
+
+set background=dark
+let g:solarized_termcolors=256
+colo solarized
+
+set noswapfile
+set noesckeys
