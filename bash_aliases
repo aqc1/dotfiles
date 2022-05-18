@@ -18,6 +18,7 @@ alias grab="/usr/bin/git add"
 alias commit="/usr/bin/git commit -m"
 alias yeet="/usr/bin/git push"
 alias yoink="/usr/bin/git pull"
+alias clone="/usr/bin/git clone"
 
 ### FUNCTIONS ###
 
