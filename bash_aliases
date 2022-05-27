@@ -6,6 +6,10 @@ alias ls="/usr/bin/ls --color=auto --group-directories-first -lF"
 alias cat="/usr/bin/batcat"
 alias xclip="/usr/bin/xclip -selection clipboard"
 alias gdb="/usr/bin/gdb -q"
+alias vi="/usr/bin/vim"
+alias grep="/usr/bin/grep --color=auto"
+alias fgrep="/usr/bin/fgrep --color=auto"
+alias egrep="/usr/bin/egrep --color=auto"
 
 # Package manager aliases
 alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt update"
@@ -66,4 +70,21 @@ docker_bash() {
 
 docker_shell() {
     /usr/bin/sudo /usr/bin/docker run --rm -it "$@" /bin/sh
+}
+
+# Make moving up several directories easier
+up() {
+    NUM=$1
+
+    if [[ $NUM =~ ^[\-0-9]+$ ]]
+    then
+        if (( NUM < 0 )) 
+        then
+            NUM=${NUM#-}
+            NUM=$((NUM+1))
+            cd $(/usr/bin/echo $PWD | /usr/bin/cut -d/ -f1-$((NUM+1)))
+        else
+            cd $(/usr/bin/printf "%.0s../" $(/usr/bin/seq 1 ${NUM}))
+        fi
+    fi
 }
