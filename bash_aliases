@@ -10,6 +10,7 @@ alias vi="/usr/bin/vim"
 alias grep="/usr/bin/grep --color=auto"
 alias fgrep="/usr/bin/fgrep --color=auto"
 alias egrep="/usr/bin/egrep --color=auto"
+alias what="/usr/bin/apropos"
 
 # Package manager aliases
 alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt update"
