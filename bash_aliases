@@ -83,7 +83,7 @@ up() {
         then
             NUM=${NUM#-}
             NUM=$((NUM+1))
-            cd $(/usr/bin/echo $PWD | /usr/bin/cut -d/ -f1-$((NUM+1)))
+            cd $(/usr/bin/echo $PWD | /usr/bin/cut -d/ -f1-$NUM)
         else
             cd $(/usr/bin/printf "%.0s../" $(/usr/bin/seq 1 ${NUM}))
         fi
