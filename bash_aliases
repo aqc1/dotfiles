@@ -1,5 +1,3 @@
-### ALIASES ###
-
 # Quality of life/generic
 alias cls="/usr/bin/clear"
 alias ls="/usr/bin/ls --color=auto --group-directories-first -lF"
@@ -26,27 +24,24 @@ alias yoink="/usr/bin/git pull"
 alias clone="/usr/bin/git clone"
 alias status="/usr/bin/git status"
 
-### FUNCTIONS ###
-
 # Makes extracting various files easier
 extract() {
-  if [ -f $1 ]
-  then
-    case $1 in
-      *.tar.bz2)  /usr/bin/tar xjf $1    ;;
-      *.tar.gz)   /usr/bin/tar xzf $1    ;;
-      *.bz2)      /usr/bin/bunzip2 $1    ;;
-      *.rar)      /usr/bin/unrar x $1    ;;
-      *.gz)       /usr/bin/gunzip $1     ;;
-      *.tar)      /usr/bin/tar xf $1     ;;
-      *.tbz2)     /usr/bin/tar xjf $1    ;;
-      *.tgz)      /usr/bin/tar xzf $1    ;;
-      *.zip)      /usr/bin/unzip $1      ;;
-      *.Z)        /usr/bin/uncompress $1 ;;
-      *.7z)       /usr/bin/7z x $1       ;;
-      *.deb)      /usr/bin/ar x $1       ;;
-      *.tar.xz)   /usr/bin/tar xf $1     ;;
-      *.tar.zst)  /usr/bin/unzstd $1     ;;
+  if [ -f "$1" ]; then
+    case "$1" in
+      *.tar.bz2)  /usr/bin/tar xjf "$1"    ;;
+      *.tar.gz)   /usr/bin/tar xzf "$1"    ;;
+      *.bz2)      /usr/bin/bunzip2 "$1"    ;;
+      *.rar)      /usr/bin/unrar x "$1"    ;;
+      *.gz)       /usr/bin/gunzip "$1"     ;;
+      *.tar)      /usr/bin/tar xf "$1"     ;;
+      *.tbz2)     /usr/bin/tar xjf "$1"    ;;
+      *.tgz)      /usr/bin/tar xzf "$1"    ;;
+      *.zip)      /usr/bin/unzip "$1"      ;;
+      *.Z)        /usr/bin/uncompress "$1" ;;
+      *.7z)       /usr/bin/7z x "$1"       ;;
+      *.deb)      /usr/bin/ar x "$1"       ;;
+      *.tar.xz)   /usr/bin/tar xf "$1"     ;;
+      *.tar.zst)  /usr/bin/unzstd "$1"     ;;
       *)          /usr/bin/echo "'$1' cannot be extracted with extract()..." ;;
     esac
   else
@@ -76,16 +71,13 @@ docker_shell() {
 # Make moving up several directories easier
 up() {
     NUM=$1
-
-    if [[ $NUM =~ ^[\-0-9]+$ ]]
-    then
-        if (( NUM < 0 )) 
-        then
+    if [[ $NUM =~ ^[\-0-9]+$ ]]; then
+        if (( NUM < 0 )); then
             NUM=${NUM#-}
             NUM=$((NUM+1))
-            cd $(/usr/bin/echo $PWD | /usr/bin/cut -d/ -f1-$NUM)
+            cd "$(/usr/bin/echo "$PWD" | /usr/bin/cut -d/ -f1-$NUM)" || exit
         else
-            cd $(/usr/bin/printf "%.0s../" $(/usr/bin/seq 1 ${NUM}))
+            cd "$(/usr/bin/printf "%.0s../" "$(/usr/bin/seq 1 ${NUM})")" || exit
         fi
     fi
 }
