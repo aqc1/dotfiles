@@ -25,6 +25,7 @@ alias clone="/usr/bin/git clone"
 alias status="/usr/bin/git status"
 
 # Makes extracting various files easier
+# :param $1: File to be extracted
 extract() {
   if [ -f "$1" ]; then
     case "$1" in
@@ -50,16 +51,20 @@ extract() {
 }
 
 # Creates backup copy of file
+# :param $1: File to create a .bak copy of
 backup() {
     /usr/bin/cp "$1"{,.bak}
 }
 
 # Quickly grep through man pages
+# :param $1: Command to search
+# :param $2: Search pattern
 rtfm() {
     /usr/bin/man "$1" | /usr/bin/grep "$2"
 }
 
 # Docker functions
+# :param $@: Any switches for forwarding + image
 docker_bash() {
     /usr/bin/sudo /usr/bin/docker run --rm -it "$@" /bin/bash
 }
@@ -69,6 +74,7 @@ docker_shell() {
 }
 
 # Make moving up several directories easier
+# :param $1: Number of directories to traverse
 up() {
     NUM=$1
     if [[ $NUM =~ ^[\-0-9]+$ ]]; then
