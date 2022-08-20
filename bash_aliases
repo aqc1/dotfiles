@@ -83,7 +83,9 @@ up() {
             NUM=$((NUM+1))
             cd "$(/usr/bin/echo "$PWD" | /usr/bin/cut -d/ -f1-$NUM)" || exit
         else
-            cd "$(/usr/bin/printf "%.0s../" "$(/usr/bin/seq 1 ${NUM})")" || exit
+            for ((i=1; i <= NUM; i++)); do
+                cd ../
+            done
         fi
     fi
 }
