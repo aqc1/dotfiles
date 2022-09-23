@@ -1,14 +1,15 @@
-# Quality of life/generic
+# Quality of life
 alias cls="/usr/bin/clear"
-alias ls="/usr/bin/ls --color=auto --group-directories-first -lF"
-alias cat="/usr/bin/batcat"
 alias xclip="/usr/bin/xclip -selection clipboard"
 alias gdb="/usr/bin/gdb -q"
 alias vi="/usr/bin/vim"
-alias grep="/usr/bin/grep --color=auto"
-alias fgrep="/usr/bin/fgrep --color=auto"
-alias egrep="/usr/bin/egrep --color=auto"
-alias what="/usr/bin/apropos"
+
+# Rust versions of GNU utilities
+alias cat="/usr/bin/batcat"
+alias ls="/usr/bin/exa --color=auto --group-directories-first -lF"
+alias grep='/usr/bin/rg'
+alias find='/usr/bin/fdfind'
+alias ps='/usr/bin/sudo /home/$USER/.cargo/bin/procs'
 
 # Package manager aliases
 alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt update"
@@ -81,7 +82,7 @@ up() {
         if (( NUM < 0 )); then
             NUM=${NUM#-}
             NUM=$((NUM+1))
-            cd "$(/usr/bin/echo "$PWD" | /usr/bin/cut -d/ -f1-$NUM)" || exit
+            cd "$(/usr/bin/echo "$PWD" | /usr/bin/cut -d/ -f1-$NUM)"
         else
             for ((i=1; i <= NUM; i++)); do
                 cd ../
