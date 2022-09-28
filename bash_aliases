@@ -1,8 +1,21 @@
 # Quality of life
 alias cls="/usr/bin/clear"
-alias xclip="/usr/bin/xclip -selection clipboard"
+alias {quit,:q}="exit"
+alias root="/usr/bin/sudo -i"
+alias reboot="/usr/bin/sudo /usr/sbin/reboot"
+
+# Editing and debugging
 alias gdb="/usr/bin/gdb -q"
 alias vi="/usr/bin/vim"
+
+# Network
+alias ports="/usr/bin/netstat -tulanp"
+alias serve="/usr/bin/python3 -m http.server"
+
+# Pipe into these
+alias xclip="/usr/bin/xclip -selection clipboard"
+alias uppercase="/usr/bin/tr '[:lower:]' '[:upper:]'"
+alias lowercase="/usr/bin/tr '[:upper:]' '[:lower:]'"
 
 # Rust versions of GNU utilities
 alias cat="/usr/bin/batcat"
@@ -15,13 +28,13 @@ alias ps='/usr/bin/sudo /home/$USER/.cargo/bin/procs'
 alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt update"
 alias upgrade="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt upgrade"
 alias clean="/usr/bin/sudo /usr/bin/apt clean && /usr/bin/sudo /usr/bin/apt autoclean && /usr/bin/sudo /usr/bin/apt autoremove"
-alias cowabunga="/usr/bin/sudo /usr/bin/apt -y install"
+alias install="/usr/bin/sudo /usr/bin/apt -y install"
 
 # Git-specific
-alias grab="/usr/bin/git add"
+alias add="/usr/bin/git add"
 alias commit="/usr/bin/git commit -m"
-alias yeet="/usr/bin/git push"
-alias yoink="/usr/bin/git pull"
+alias {push,yeet}="/usr/bin/git push"
+alias {pull,yoink}="/usr/bin/git pull"
 alias clone="/usr/bin/git clone"
 alias status="/usr/bin/git status"
 
