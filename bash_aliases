@@ -3,6 +3,7 @@ alias cls="/usr/bin/clear"
 alias {quit,:q}="exit"
 alias root="/usr/bin/sudo -i"
 alias reboot="/usr/bin/sudo /usr/sbin/reboot"
+alias reload="source \"/home/$USER/.bashrc\""
 
 # Editing and debugging
 alias gdb="/usr/bin/gdb -q"
