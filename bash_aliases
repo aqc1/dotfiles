@@ -43,7 +43,7 @@ alias status="/usr/bin/git status"
 # Makes extracting various files easier
 # :param $1: File to be extracted
 extract() {
-  if [ $# -ne 1]; then
+  if [ $# -ne 1 ]; then
     echo "Usage: extract <archive>"
   else
     if [ -f "$1" ]; then
@@ -73,7 +73,7 @@ extract() {
 # Creates backup copy of file
 # :param $1: File to create a .bak copy of
 backup() {
-    if [ $# -ne 1]; then
+    if [ $# -ne 1 ]; then
         echo "Usage: backup <file>"
     else
         /usr/bin/cp "$1"{,.bak}
@@ -84,7 +84,7 @@ backup() {
 # :param $1: Command to search
 # :param $2: Search pattern
 rtfm() {
-    if [ $# -ne 1]; then
+    if [ $# -ne 1 ]; then
         echo "Usage: rtfm <command> <search query>"
     else
         /usr/bin/man "$1" | /usr/bin/grep "$2"
@@ -112,7 +112,7 @@ docker_shell() {
 # Make moving up several directories easier
 # :param $1: Number of directories to traverse
 up() {
-    if [ $# -ne 1]; then
+    if [ $# -ne 1 ]; then
         echo "Usage: up <num of directories>"
     else
         NUM=$1
