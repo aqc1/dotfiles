@@ -1,3 +1,15 @@
+### Bash Prompt ###
+PS1='\[\e[0;38;5;32m\][\[\e[0;92m\]\u\[\e[0;38;5;32m\]@\[\e[0;92m\]\H\[\e[0;38;5;32m\]: \[\e[0;38;5;178m\]\w\[\e[0;38;5;32m\]] \[\e[0;92m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\n\[\e[0;38;5;32m\]\$ \[\e[0m\]'
+
+### Environment Variables ###
+
+# Golang variables
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
+# Rust Variables
+source "$HOME/.cargo/env"
+
 ### Bash Aliases ###
 
 # Quality of life
@@ -39,7 +51,6 @@ alias {push,yeet}="/usr/bin/git push"
 alias {pull,yoink}="/usr/bin/git pull"
 alias clone="/usr/bin/git clone"
 alias status="/usr/bin/git status"
-
 
 ### Bash Functions ###
 
