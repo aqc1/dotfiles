@@ -1,41 +1,8 @@
-" Vundle
-filetype off
-set nocompatible
-
-let g:vundle_default_git_proto = 'git'
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Bundles
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'sjl/gundo.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdtree'
-Plugin 'TomNomNom/xoria256.vim'
-Plugin 'fatih/vim-go'
-
-call vundle#end()
-
-
-" Required for vundle
-"filetype plugin indent on 
-filetype plugin on 
-filetype indent on
- 
- 
 " Highlighting
 syntax on
 
+" Encoding
 set encoding=utf-8
-
-" Airline config
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='powerlineish'
 
 " History
 set history=50
@@ -52,7 +19,7 @@ set nu
 " Line wrapping
 set nowrap
 set linebreak
-set showbreak=▹
+set showbreak=$
 
 " Auto indent what you can
 set autoindent
@@ -77,18 +44,6 @@ set softtabstop=4
 set shiftround
 set expandtab
 
-" Disable mouse
-set mouse=
-
-" Colorscheme
-if &t_Co == 256
-    try
-        color xoria256
-    catch /^Vim\%((\a\+)\)\=:E185/
-        " Oh well
-    endtry
-endif
-
 " Bash command for Home/End
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -98,10 +53,6 @@ set wildmenu
 
 " Folding
 set nofoldenable
-
-set background=dark
-let g:solarized_termcolors=256
-colo solarized
 
 set noswapfile
 set noesckeys

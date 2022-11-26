@@ -1,9 +1,11 @@
+### Bash Aliases ###
+
 # Quality of life
 alias cls="/usr/bin/clear"
 alias {quit,:q}="exit"
 alias root="/usr/bin/sudo -i"
 alias reboot="/usr/bin/sudo /usr/sbin/reboot"
-alias reload="source \"/home/$USER/.bashrc\""
+alias reload="source \"$HOME/.bashrc\""
 
 # Editing and debugging
 alias gdb="/usr/bin/gdb -q"
@@ -23,8 +25,6 @@ alias cat="/usr/bin/batcat"
 alias ls="/usr/bin/exa --color=auto --group-directories-first -lF"
 alias grep='/usr/bin/rg'
 alias find='/usr/bin/fdfind'
-# This one is different... maybe find a different replacement
-alias ps='/usr/bin/sudo /home/$USER/.cargo/bin/procs'
 
 # Package manager aliases
 alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt update"
@@ -39,6 +39,9 @@ alias {push,yeet}="/usr/bin/git push"
 alias {pull,yoink}="/usr/bin/git pull"
 alias clone="/usr/bin/git clone"
 alias status="/usr/bin/git status"
+
+
+### Bash Functions ###
 
 # Makes extracting various files easier
 # :param $1: File to be extracted
@@ -84,7 +87,7 @@ backup() {
 # :param $1: Command to search
 # :param $2: Search pattern
 rtfm() {
-    if [ $# -ne 1 ]; then
+    if [ $# -ne 2 ]; then
         echo "Usage: rtfm <command> <search query>"
     else
         /usr/bin/man "$1" | /usr/bin/grep "$2"
