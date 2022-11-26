@@ -54,6 +54,11 @@ alias status="/usr/bin/git status"
 
 ### Bash Functions ###
 
+# Since I forget to use sudo
+oops() {
+    /usr/bin/sudo $(history | /usr/bin/tail -n 2 | /usr/bin/head -n 1 | /usr/bin/cut -c8- )
+}
+
 # Makes extracting various files easier
 # :param $1: File to be extracted
 extract() {
