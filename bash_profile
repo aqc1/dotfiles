@@ -7,9 +7,6 @@ PS1='\[\e[0;38;5;32m\][\[\e[0;92m\]\u\[\e[0;38;5;32m\]@\[\e[0;92m\]\H\[\e[0;38;5
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
-# Rust Variables
-source "$HOME/.cargo/env"
-
 ### Bash Aliases ###
 
 # Quality of life
