@@ -1,59 +1,40 @@
 ### Bash Prompt ###
 PS1='\[\e[0;38;5;32m\][\[\e[0;92m\]\u\[\e[0;38;5;32m\]@\[\e[0;92m\]\H\[\e[0;38;5;32m\]: \[\e[0;38;5;214m\]\W\[\e[0;38;5;32m\]] \[\e[0;92m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\n\[\e[0;38;5;32m\]\$ \[\e[0m\]'
 
-### Environment Variables ###
-
-# Golang variables
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
-
 ### Bash Aliases ###
 
 # Quality of life
-alias cls="/usr/bin/clear"
+alias cls="clear"
 alias {quit,:q}="exit"
-alias root="/usr/bin/sudo -i"
-alias reboot="/usr/bin/sudo /usr/sbin/reboot"
+alias root="sudo -i"
 alias reload="source \"$HOME/.bashrc\""
 
 # Editing and debugging
-alias gdb="/usr/bin/gdb -q"
-alias vi="/usr/bin/vim"
+alias gdb="gdb -q"
+alias vi="vim"
 
 # Network
-alias ports="/usr/bin/netstat -tulanp"
-alias serve="/usr/bin/python3 -m http.server"
+alias ports="netstat -tulanp"
+alias serve="python3 -m http.server"
 
 # Pipe into these
-alias xclip="/usr/bin/xclip -selection clipboard"
-alias uppercase="/usr/bin/tr '[:lower:]' '[:upper:]'"
-alias lowercase="/usr/bin/tr '[:upper:]' '[:lower:]'"
-
-# Rust versions of GNU utilities
-alias cat="/usr/bin/batcat"
-alias ls="/usr/bin/exa --color=auto --group-directories-first -lF"
-alias grep='/usr/bin/rg'
-alias find='/usr/bin/fdfind'
-
-# Package manager aliases
-alias update="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt update"
-alias upgrade="/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt upgrade"
-alias clean="/usr/bin/sudo /usr/bin/apt clean && /usr/bin/sudo /usr/bin/apt autoclean && /usr/bin/sudo /usr/bin/apt autoremove"
-alias install="/usr/bin/sudo /usr/bin/apt -y install"
+alias xclip="xclip -selection clipboard"
+alias uppercase="tr '[:lower:]' '[:upper:]'"
+alias lowercase="tr '[:upper:]' '[:lower:]'"
 
 # Git-specific
-alias add="/usr/bin/git add"
-alias commit="/usr/bin/git commit -m"
-alias {push,yeet}="/usr/bin/git push"
-alias {pull,yoink}="/usr/bin/git pull"
-alias clone="/usr/bin/git clone"
-alias status="/usr/bin/git status"
+alias add="git add"
+alias commit="git commit -m"
+alias {push,yeet}="git push"
+alias {pull,yoink}="git pull"
+alias clone="git clone"
+alias status="git status"
 
 ### Bash Functions ###
 
 # Since I forget to use sudo
 oops() {
-    /usr/bin/sudo $(history | /usr/bin/tail -n 2 | /usr/bin/head -n 1 | /usr/bin/cut -c8- )
+    sudo $(history | tail -n 2 | head -n 1 | cut -c8- )
 }
 
 # Makes extracting various files easier
@@ -64,24 +45,24 @@ extract() {
   else
     if [ -f "$1" ]; then
         case "$1" in
-        *.tar.bz2)  /usr/bin/tar xjf "$1"    ;;
-        *.tar.gz)   /usr/bin/tar xzf "$1"    ;;
-        *.bz2)      /usr/bin/bunzip2 "$1"    ;;
-        *.rar)      /usr/bin/unrar x "$1"    ;;
-        *.gz)       /usr/bin/gunzip "$1"     ;;
-        *.tar)      /usr/bin/tar xf "$1"     ;;
-        *.tbz2)     /usr/bin/tar xjf "$1"    ;;
-        *.tgz)      /usr/bin/tar xzf "$1"    ;;
-        *.zip)      /usr/bin/unzip "$1"      ;;
-        *.Z)        /usr/bin/uncompress "$1" ;;
-        *.7z)       /usr/bin/7z x "$1"       ;;
-        *.deb)      /usr/bin/ar x "$1"       ;;
-        *.tar.xz)   /usr/bin/tar xf "$1"     ;;
-        *.tar.zst)  /usr/bin/unzstd "$1"     ;;
-        *)          /usr/bin/echo "'$1' cannot be extracted with extract()..." ;;
+        *.tar.bz2)  tar xjf "$1"    ;;
+        *.tar.gz)   tar xzf "$1"    ;;
+        *.bz2)      bunzip2 "$1"    ;;
+        *.rar)      unrar x "$1"    ;;
+        *.gz)       gunzip "$1"     ;;
+        *.tar)      tar xf "$1"     ;;
+        *.tbz2)     tar xjf "$1"    ;;
+        *.tgz)      tar xzf "$1"    ;;
+        *.zip)      unzip "$1"      ;;
+        *.Z)        uncompress "$1" ;;
+        *.7z)       7z x "$1"       ;;
+        *.deb)      ar x "$1"       ;;
+        *.tar.xz)   tar xf "$1"     ;;
+        *.tar.zst)  unzstd "$1"     ;;
+        *)          echo "'$1' cannot be extracted with extract()..." ;;
         esac
     else
-        /usr/bin/echo "'$1' is not a valid file..."
+        echo "'$1' is not a valid file..."
     fi
   fi
 }
@@ -92,7 +73,7 @@ backup() {
     if [ $# -ne 1 ]; then
         echo "Usage: backup <file>"
     else
-        /usr/bin/cp "$1"{,.bak}
+        cp "$1"{,.bak}
     fi
 }
 
@@ -103,45 +84,6 @@ rtfm() {
     if [ $# -ne 2 ]; then
         echo "Usage: rtfm <command> <search query>"
     else
-        /usr/bin/man "$1" | /usr/bin/grep "$2"
-    fi
-}
-
-# Docker functions
-# :param $@: Any switches for forwarding + image
-docker_bash() {
-    if [ $# -lt 1 ]; then
-        echo "Usage: docker_bash <image> [<docker params>, ...]"
-    else
-        /usr/bin/sudo /usr/bin/docker run --rm -it "$@" /bin/bash
-    fi
-}
-
-docker_shell() {
-    if [ $# -lt 1 ]; then
-        echo "Usage: docker_shell <image> [<docker params>, ...]"
-    else
-        /usr/bin/sudo /usr/bin/docker run --rm -it "$@" /bin/sh
-    fi
-}
-
-# Make moving up several directories easier
-# :param $1: Number of directories to traverse
-up() {
-    if [ $# -ne 1 ]; then
-        echo "Usage: up <num of directories>"
-    else
-        NUM=$1
-        if [[ $NUM =~ ^[\-0-9]+$ ]]; then
-            if (( NUM < 0 )); then
-                NUM=${NUM#-}
-                NUM=$((NUM+1))
-                cd "$(/usr/bin/echo "$PWD" | /usr/bin/cut -d/ -f1-$NUM)"
-            else
-                for ((i=1; i <= NUM; i++)); do
-                    cd ../
-                done
-            fi
-        fi
+        man "$1" | grep "$2"
     fi
 }
